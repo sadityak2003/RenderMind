@@ -104,11 +104,13 @@ body {
   
   .buttons button:first-child {
     background-color: #ff9900;
+    width: 15vh;
     color: white;
   }
   
   .buttons button:last-child {
     background-color: #28a745;
+    width: 15vh;
     color: white;
   }
 
@@ -139,27 +141,38 @@ body {
   
   /* Responsive Design */
   @media (max-width: 768px) {
+    
     .input-container {
-      flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
   
     .input-container input {
-      width: 100%;
+        width: 90%;
     }
   
     .buttons {
-      display: flex;
-      flex-direction: column;
+        flex-direction: column;
+        width: 100%;
     }
   
     .buttons button {
-      width: 100%;
+        width: 100%;
+    }
+
+    .image-container {
+       width: 50vh;
+       height: 50vh;
+    }
+  
+    .image-container img {
+        width: 90%;
     }
   }
-
+  
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  
   
