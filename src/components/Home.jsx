@@ -5,11 +5,11 @@ import "../styles.css";
 const Home = () => {
   const [prompt, setPrompt] = useState("");
   const [image, setImage] = useState(null);
-  const [loading, setLoading] = useState(false); // New state for loading
+  const [loading, setLoading] = useState(false);
 
   const generateImage = async () => {
-    setLoading(true); // Start loading
-    setImage(null); // Clear previous image
+    setLoading(true);
+    setImage(null);
 
     try {
       const response = await axios.post(
@@ -30,7 +30,7 @@ const Home = () => {
       console.error("Error generating image:", error.response?.data || error);
     }
 
-    setLoading(false); // Stop loading
+    setLoading(false);
   };
 
   const downloadImage = () => {
@@ -46,7 +46,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h2 className="headline">Crafting your thoughts into reality</h2>
+      <h2 className="headline">Crafting your thoughts into reality.</h2>
       <div className="input-container">
         <input
           type="text"
@@ -57,17 +57,26 @@ const Home = () => {
         <button onClick={generateImage}>Generate</button>
       </div>
 
-      {/* Show the loading spinner when generating an image */}
-      {loading && <div className="loader"></div>}
+      <div className="image-container">
+        {loading ? (
+          <div className="image-holder">
+          <div className="loader"></div>
+        </div>
+        ) : image ? (
+          <img src={image} alt="Generated" className="image"/>
+        ) : (
+          <div className="image-holder">
+            <p className="image-holder-text">Your image will be displayed here</p>
+          </div>
+        )}
+      </div>
 
       {image && (
-        <div className="image-container">
-          <img src={image} alt="Generated" />
           <div className="buttons">
             <button onClick={generateImage}>Regenerate</button>
             <button onClick={downloadImage}>Download</button>
           </div>
-        </div>
+        
       )}
     </div>
   );
